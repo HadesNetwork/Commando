@@ -33,6 +33,7 @@ namespace CortexPE\Commando;
 use CortexPE\Commando\constraint\BaseConstraint;
 use CortexPE\Commando\traits\ArgumentableTrait;
 use CortexPE\Commando\traits\IArgumentable;
+use pocketmine\lang\Translatable;
 use pocketmine\command\CommandSender;
 use pocketmine\permission\PermissionManager;
 use pocketmine\plugin\Plugin;
@@ -44,8 +45,8 @@ abstract class BaseSubCommand implements IArgumentable, IRunnable {
 	private string $name;
 	/** @var string[] */
 	private array $aliases;
-	/** @var string */
-	private string $description;
+	/** @var Translatable|string */
+	private Translatable|string $description;
 	/** @var string */
 	protected string $usageMessage;
 	/** @var string[] */
@@ -57,7 +58,7 @@ abstract class BaseSubCommand implements IArgumentable, IRunnable {
 	/** @var BaseConstraint[] */
 	private array $constraints = [];
 
-	public function __construct(string $name, string $description = "", array $aliases = []) {
+	public function __construct(string $name, Translatable|string $description = "", array $aliases = []) {
 		$this->name = $name;
 		$this->description = $description;
 		$this->aliases = $aliases;
@@ -84,13 +85,13 @@ abstract class BaseSubCommand implements IArgumentable, IRunnable {
 	}
 
 	/**
-	 * @return string
+	 * @return Translatable|string
 	 */
-	public function getDescription(): string {
+	public function getDescription(): Translatable|string {
 		return $this->description;
 	}
 
-	public function setDescription(string $description): void{
+	public function setDescription(Translatable|string $description): void{
 		$this->description = $description;
 	}
 
