@@ -155,6 +155,10 @@ abstract class BaseSubCommand implements IArgumentable, IRunnable {
 		$this->parent = $parent;
 	}
 
+	public function getParent(): BaseCommand{
+		return $this->parent;
+	}
+	
 	public function sendError(int $errorCode, array $args = []): void {
 		$this->parent->sendError($errorCode, $args);
 	}
