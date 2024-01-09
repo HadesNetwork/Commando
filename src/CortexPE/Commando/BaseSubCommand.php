@@ -90,6 +90,10 @@ abstract class BaseSubCommand implements IArgumentable, IRunnable {
 		return $this->description;
 	}
 
+	public function setDescription(string $description): void{
+		$this->description = $description;
+	}
+
 	/**
 	 * @return string
 	 */
